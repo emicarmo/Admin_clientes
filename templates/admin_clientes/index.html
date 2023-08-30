@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo_pagina %} - Inicio{% endblock  %}
+{% block titulo_principal %}Sistema Admin Clientes{% endblock  %}
+{% block principal %}
+    {% if user.is_authenticated %}
+        <h5 class="container display-2">Bienvenido {{ user.username }}</h5>
+    {% else %}
+        <h5 class="container display-2">Por favor registrese o inicie sesion</h5>
+    {% endif %}
+{% endblock  %}

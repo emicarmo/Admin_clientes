@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo_pagina %}- Iniciar Sesion{% endblock  %}
+{% block titulo_principal %}Inicia Sesion{% endblock  %}
+{% block parrafo1 %} {{error}} {% endblock %}
+{% block principal %}
+    <form class="container" action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input class="btn btn-outline-primary" type="submit" value="Iniciar Sesion">
+    </form>
+{% endblock  %}

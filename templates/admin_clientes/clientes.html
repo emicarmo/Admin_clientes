@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo_pagina %} - Clientes{% endblock  %}
+{% block titulo_principal %}Administración de clientes{% endblock  %}
+{% block titulo_secundario %}Listado{% endblock  %}
+{% block principal %}
+    <table class="container table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Activo</th>
+                <th>Fecha-nacimiento</th>
+                <th>Tipo IVA</th>
+                <th>Localidad</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.apellido }}</td>
+            <td>{{ cliente.email }}</td>
+            <td>
+            {% if cliente.activo %}
+                Si
+            {% else %}
+                No
+            {% endif %}
+            </td>
+            <td>{{ cliente.fecha_nac }}</td>
+            <td>{{ cliente.tipo_iva }}</td>
+            <td>{{ cliente.localidad }}</td>
+            <td id="btn-modificar-cliente"><a href="{% url 'modificar_cliente' cliente.id %}"><i class="bi bi-pencil-square"></i></a></td>
+            <td id="btn-eliminar-cliente"><a href="{% url 'eliminar_cliente' cliente.id %}"><i class="bi bi-x-circle"></i></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% if messages %}
+    {% for message in messages %}
+        <div class=" container alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+    {% endif %}
+{% endblock  %}

@@ -1,0 +1,24 @@
+body{
+    background-image: linear-gradient(rgba(156,40,41,0.5), rgba(156,40,41,0.5)), url(../images/comportamientos-empresa-cliente.jpg);
+    background-size: cover;
+}
+
+div{
+    text-align: center;
+    margin-top: 350px;
+    line-height: 200px;
+}
+
+div h1{
+    color: white;
+    font-size: 80px;
+}
+
+div button{
+    width: 200px;
+    text-transform: uppercase;
+}
+
+div button:hover{
+    transform: scale(1.1);
+}

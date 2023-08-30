@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo_pagina %} - Localidades{% endblock  %}
+{% block titulo_principal %}Administración de localidades{% endblock  %}
+{% block titulo_secundario %}Listado{% endblock  %}
+{% block principal %}
+    <table class="container table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre localidad</th>
+                <th>Cod. postal</th>
+                <th>Provincia</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        {% for localidad in localidades %}
+            <tr>
+                <td>{{ localidad.nombre }}</td>
+                <td>{{ localidad.cp }}</td>
+                <td>{{ localidad.provincia }}</td>
+                <td id="btn-modificar-localidad"><a href="{% url 'modificar_localidad' localidad.id %}"><i class="bi bi-pencil-square"></i></a></td>
+                <td id="btn-eliminar-localidad"><a href="{% url 'eliminar_localidad' localidad.id %}"><i class="bi bi-x-circle"></i></a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="container alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+    {% endif %}
+{% endblock  %}
